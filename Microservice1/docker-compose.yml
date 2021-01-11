@@ -1,0 +1,13 @@
+version: '2'
+services:
+  demo-application:
+    image: microservice1:1.0
+    #user: root  # has to run as root user, because it needs to write logs to shared volume
+    environment:
+      - LOGGING_FILE_NAME=/logs/microservice1.log
+    ports:
+      - "8080:8080"
+    volumes:
+      - log_volume:/logs
+volumes:
+  log_volume:
